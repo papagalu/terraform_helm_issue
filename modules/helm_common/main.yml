@@ -1,0 +1,16 @@
+terraform {
+    required_providers {
+        helm = {
+            source = "hashicorp/helm"
+        }
+    }
+}
+
+resource "helm_release" "reflector" {
+    provider = helm
+
+    chart = "reflector"
+    name = "reflector"
+    repository = "https://emberstack.github.io/helm-charts"
+    namespace = "kube-system"
+}
